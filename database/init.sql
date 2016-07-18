@@ -1,6 +1,7 @@
 DROP USER IF EXISTS hpe_account_management;
-CREATE USER hpe_account_management PASSWORD 'hpe_account_management' WITH SUPERUSER;
 CREATE DATABASE hpe_account_management;
+CREATE USER hpe_account_management WITH SUPERUSER;
+ALTER USER hpe_account_management WITH PASSWORD 'hpe_account_management';
 GRANT ALL PRIVILEGES ON DATABASE hpe_account_management TO hpe_account_management;
 --
 --CREATE ROLE gaia_account_management_test WITH SUPERUSER CREATEDB;
