@@ -7,7 +7,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
-// var AngularInjectorPlugin = require('webpack-angular-injector-plugin');
 
 /**
  * Env
@@ -32,7 +31,7 @@ module.exports = function makeWebpackConfig () {
    * Karma will set this when it's a test build
    */
   config.entry = isTest ? {} : {
-    app: './client/app/app.js'
+    app: './app/app.js'
   };
 
   /**
@@ -43,7 +42,7 @@ module.exports = function makeWebpackConfig () {
    */
   config.output = isTest ? {} : {
     // Absolute output directory
-    path: __dirname + '/client/dist',
+    path: __dirname + '/dist',
 
     // Output path from the view of the page
     // Uses webpack-dev-server in development
@@ -160,7 +159,7 @@ module.exports = function makeWebpackConfig () {
     // Render index.html
     config.plugins.push(
       new HtmlWebpackPlugin({
-        template: './client/public/index.html',
+        template: './public/index.html',
         inject: 'body'
       }),
 
@@ -194,21 +193,21 @@ module.exports = function makeWebpackConfig () {
 
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
-      // new webpack.optimize.UglifyJsPlugin({
-      //   minimize: true,
-      //   sourceMap: true,
-      //   compress: {
-      //     drop_console: true
-      //   },
-      //   mangle: {
-      //     except: ['$super', '$', '_', 'exports', 'require', '$q']
-      //   }
-      // }),
+      new webpack.optimize.UglifyJsPlugin({
+        minimize: true,
+        sourceMap: true,
+        compress: {
+          drop_console: true
+        },
+        mangle: {
+          except: ['$super', '$', '_', 'exports', 'require', '$q']
+        }
+      }),
 
       // Copy assets from the public folder
       // Reference: https://github.com/kevlened/copy-webpack-plugin
       new CopyWebpackPlugin([{
-        from: __dirname + '/client/public'
+        from: __dirname + '/public'
       }])
     )
   }
@@ -219,7 +218,7 @@ module.exports = function makeWebpackConfig () {
    * Reference: http://webpack.github.io/docs/webpack-dev-server.html
    */
   config.devServer = {
-    contentBase: './client/public',
+    contentBase: './public',
     stats: 'minimal',
     proxy: {
       '/api*': {
