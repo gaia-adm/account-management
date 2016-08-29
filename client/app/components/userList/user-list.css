@@ -1,6 +1,0 @@
-.user-list .emails {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    max-width: 200px;
-    font-size: smaller;
-}
