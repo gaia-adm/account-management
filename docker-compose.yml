@@ -3,7 +3,7 @@ services:
   # database
   db:
     build:
-      context: ./database
+      context: ./db
       args:
         - https_proxy
         - http_proxy
@@ -18,7 +18,7 @@ services:
   # backend server
   backend:
     build:
-      context: .
+      context: ./server
       args:
         - https_proxy
         - http_proxy

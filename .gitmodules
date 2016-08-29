@@ -1,9 +1,9 @@
-[submodule "gaia-account-management-client"]
-	path = gaia-account-management-client
+[submodule "client"]
+	path = client
 	url = https://github.com/gaia-adm/gaia-account-management-client.git
-[submodule "gaia-account-management-db"]
-	path = gaia-account-management-db
+[submodule "db"]
+	path = db
 	url = https://github.com/gaia-adm/gaia-account-management-db.git
-[submodule "gaia-account-management-server"]
-	path = gaia-account-management-server
+[submodule "server"]
+	path = server
 	url = https://github.com/gaia-adm/gaia-account-management-server.git
