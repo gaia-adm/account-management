@@ -18,6 +18,13 @@ This app is build in [NodeJS](https://nodejs.org), with an [Express](https://exp
 - Both dev environments (backend and client) are started from their root directories using ```npm run start:dev```
 - ```.env``` file needed for backend and client
 
+## Notes for developers 2 - how to work with submodules
+- This repository is superset of other repositories: db, server and client. One should clone this repository with *"--recursive"* option to bring the submodules too
+- By default submodules are in *"detached HEAD"* state. If one want to clone this repository once and work with submodules, it should be done as following:
+  - For every submodule run ```git checkout master``` (or any other branch you want to use) and only then commit your changes
+  - Once submodule change has been committed, up to this repository folder and run ```git add <submodule-name>```, for example, "git add server". Before running this, you can check the status using *git status* and *git diff* commands
+  - Then commit the just added change as usually, e.g., ```git commit -m 'update on submodule change'``` and push it
+
 ## Demo Flow
 1. In the folder /seeds/production, the file ```1_production.js``` lists the initial production seeding of the database. The site uses Google Sign-On (and eventually more... but right now just Google), so you'll want to seed the database with your own google email address (or addresses) to validate a variety of scenarios. That file identifies the following (where you are advised to change the values of the email addresses to see how the site responds to these four distinct levels of security)
     - Awesome Superuser (id:2, email: richard.plotkin@toptal.com)
