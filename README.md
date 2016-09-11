@@ -6,6 +6,10 @@ This app is build in [NodeJS](https://nodejs.org), with an [Express](https://exp
 - See individual readme files
 
 ## Docker
+- Preliminary steps:
+  - export DB_USER=hpe_account_management and DB_DATABASE=hpe_account_management
+  - set mailgun details in server/.env.default
+  - set google_client details in client/.env.default and server/config/default.json. Not clear if needed to change client_id in client/public/index.html
 - ```docker-compose up``` will start three containers: db, backend, and client
 - after bringing up services, any combination of the following commands may be necessary (but, by default, the DB will be migrated to latest and seeded with production data)
 - ```docker-compose run backend knex migrate:latest``` will migrate to the latest db
@@ -31,6 +35,7 @@ This app is build in [NodeJS](https://nodejs.org), with an [Express](https://exp
     - Site Admin (id:3, email: richardjplotkin@gmail.com)
     - Account Admin (id:4, email: richard@richardplotkin.com)
     - Account Analyst (id:5, email:emilykplotkin@gmail.com)
+    - Gaia Team (id:10, email:gaiaadmservice@gmail.com)
 2. From the project root, run ```docker-compose up```
 3. Internally, ```docker-compose``` will have created
     - a database at :5432
